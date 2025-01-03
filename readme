@@ -1,0 +1,26 @@
+to use flask we have to make two folders with names
+1.static
+2.templates
+
+#app = Flask(__name__)
+ this is also necessary so that the Flask can locate the application's root directory
+ Flask uses the value of __name__ to determine the base directory of your application.
+
+ The __name__ variable in Python indicates the name of the current module. When the module is executed directly (as the main program), __name__ is set to "__main__". When it is imported into another module, __name__ reflects the module's actual name. Flask uses this to:
+ Run the application in debug mode when it is executed as the main program.
+ Avoid accidental execution when the module is imported into another file.
+
+#why templates and static folders are used:
+ Flask is designed to automatically look for HTML files in the templates folder when rendering views using the render_template() function. For example:
+  return render_template('index.html')
+ In this case, Flask will search for index.html in the templates folder. Using this convention eliminates the need to specify full paths, simplifying development.
+
+ The static folder is used to store static files such as CSS, JavaScript, images, fonts, and other files that do not change dynamically.
+ These files are directly served to the client by the Flask server.
+
+ Flask automatically maps the static folder to a default URL path /static/.
+ For example, if you place a CSS file style.css in the static folder, it can be accessed in your HTML using:
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+#In Flask, @app.route is a decorator used to define the URL routing for a web application.
+ It binds a specific URL (route) to a particular function, which is called whenever a user accesses that URL.
